@@ -1,7 +1,7 @@
 import re
 from functools import reduce
 
-input = open("dia11_input.txt", "r").read().strip().split("\n\n")
+input = open("input.txt", "r").read().strip().split("\n\n")
 
 
 class Monkey(object):

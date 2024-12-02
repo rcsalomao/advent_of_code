@@ -1,4 +1,4 @@
-input = [list(i) for i in open("dia08_input.txt", "r").read().strip().split("\n")]
+input = [list(i) for i in open("input.txt", "r").read().strip().split("\n")]
 
 # Parte 1
 visible_trees = 0

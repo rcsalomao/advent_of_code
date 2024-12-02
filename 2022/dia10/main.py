@@ -1,6 +1,6 @@
 import re
 
-input = open("dia10_input.txt", "r").read().strip().split("\n")
+input = open("input.txt", "r").read().strip().split("\n")
 
 # Parte 1
 total_cycles = []

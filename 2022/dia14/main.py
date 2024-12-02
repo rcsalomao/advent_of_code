@@ -3,7 +3,7 @@ import numpy as np
 
 input = [
     line.split(" -> ")
-    for line in open("dia14_input.txt", "r").read().strip().split("\n")
+    for line in open("input.txt", "r").read().strip().split("\n")
 ]
 
 walls_coords = []

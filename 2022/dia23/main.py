@@ -16,7 +16,7 @@ input = """
 """
 
 input = input.strip().split("\n")
-# input = open("dia23_input.txt", "r").read().strip().split("\n")
+# input = open("input.txt", "r").read().strip().split("\n")
 
 n = 1
 grid_size_i = n * len(input)

@@ -1,4 +1,4 @@
-section_assigment_input = open("dia04_input.txt", "r").read().strip()
+section_assigment_input = open("input.txt", "r").read().strip()
 elf_pairs = [pair.split(",") for pair in section_assigment_input.split("\n")]
 elf_pairs = [
     [

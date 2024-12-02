@@ -19,7 +19,7 @@ Sensor at x=14, y=3: closest beacon is at x=15, y=3
 Sensor at x=20, y=1: closest beacon is at x=15, y=3
 """
 input = input.strip().split("\n")
-input = open("dia15_input.txt", "r").read().strip().split("\n")
+input = open("input.txt", "r").read().strip().split("\n")
 
 sensor_data = []
 for line in input:

@@ -1,4 +1,4 @@
-move_directions = open("dia05_input.txt", "r").read().strip().split("\n")
+move_directions = open("input.txt", "r").read().strip().split("\n")
 move_directions = [
     (int(move_direction[1]), int(move_direction[3]), int(move_direction[5]))
     for move_direction in [

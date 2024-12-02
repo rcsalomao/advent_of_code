@@ -1,4 +1,4 @@
-input = open("dia06_input.txt", "r").read().strip()
+input = open("input.txt", "r").read().strip()
 
 # Parte 1
 marker_length = 4

@@ -1,6 +1,6 @@
 input = [
     tuple(move.split(" "))
-    for move in open("dia09_input.txt", "r").read().strip().split("\n")
+    for move in open("input.txt", "r").read().strip().split("\n")
 ]
 
 

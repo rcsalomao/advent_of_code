@@ -3,7 +3,7 @@
 # B X
 # C Z
 # """
-input = open("dia02_input.txt", "r").read()
+input = open("input.txt", "r").read()
 
 oponent_map = {"A": "rock", "B": "paper", "C": "scissor"}
 me_map = {

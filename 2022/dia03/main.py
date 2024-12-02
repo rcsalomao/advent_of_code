@@ -1,7 +1,7 @@
 import string
 
 # Parte 1
-rucksacks_items = open("dia03_input.txt", "r").read().strip().split("\n")
+rucksacks_items = open("input.txt", "r").read().strip().split("\n")
 rucksacks_items_count = [len(rucksacks_items[i]) for i in range(len(rucksacks_items))]
 rucksacks_compartment1_items = [rucksacks_items[i][: int(rucksacks_items_count[i] / 2)] for i in range(len(rucksacks_items))]
 rucksacks_compartment2_items = [rucksacks_items[i][int(rucksacks_items_count[i] / 2) :] for i in range(len(rucksacks_items))]

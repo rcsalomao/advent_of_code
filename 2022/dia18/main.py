@@ -1,7 +1,7 @@
 import numpy as np
 import networkx as nx
 
-input = open("dia18_input.txt", "r").read().strip().split("\n")
+input = open("input.txt", "r").read().strip().split("\n")
 
 droplets = []
 for i in input:

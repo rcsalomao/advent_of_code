@@ -111,7 +111,7 @@ class Node(object):
         return res
 
 
-input = open("dia07_input.txt", "r").read().strip().split("\n")
+input = open("input.txt", "r").read().strip().split("\n")
 
 tree = Tree("/")
 for line in input:

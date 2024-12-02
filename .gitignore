@@ -131,4 +131,4 @@ dmypy.json
 .pyre/
 
 # Advent of Code input files
-**/dia*_input.txt
+**/*input.txt

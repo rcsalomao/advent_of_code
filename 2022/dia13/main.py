@@ -1,7 +1,7 @@
 import re
 from functools import cmp_to_key
 
-input = open("dia13_input.txt", "r").read().strip().split("\n\n")
+input = open("input.txt", "r").read().strip().split("\n\n")
 input_parte1 = [tuple(pair.split("\n")) for pair in input]
 input_parte2 = []
 for pair in input:

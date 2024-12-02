@@ -9,7 +9,7 @@ acctuvwj
 abdefghi
 """
 input = input.strip().split("\n")
-input = open("dia12_input.txt", "r").read().strip().split("\n")
+input = open("input.txt", "r").read().strip().split("\n")
 # print(input)
 
 
