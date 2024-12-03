@@ -28,29 +28,35 @@ def check_level_diff(lista, min_diff=1, max_diff=3):
     return True
 
 
-# ====== PARTE 1 ======
-
 final_condition = []
-for report in reports:
-    condition_1 = check_if_sorted(report)
-    condition_2 = check_level_diff(report)
-    final_condition.append(condition_1 and condition_2)
 
-print(sum(final_condition))
 
-# ====== PARTE 2 ======
-for i in range(len(reports)):
-    if final_condition[i]:
-        continue
-    n_levels = len(reports[i])
-    for j in range(n_levels):
-        n_indexes = list(range(0, j)) + list(range(j + 1, n_levels))
-        new_report = reports[i][n_indexes]
-        condition_1 = check_if_sorted(new_report)
-        condition_2 = check_level_diff(new_report)
-        final_condition[i] = condition_1 and condition_2
+def parte_1():
+    for report in reports:
+        condition_1 = check_if_sorted(report)
+        condition_2 = check_level_diff(report)
+        final_condition.append(condition_1 and condition_2)
+    # print(final_condition)
+    print(sum(final_condition))
+
+
+def parte_2():
+    for i in range(len(reports)):
         if final_condition[i]:
-            break
+            continue
+        n_levels = len(reports[i])
+        for j in range(n_levels):
+            n_indexes = list(range(0, j)) + list(range(j + 1, n_levels))
+            new_report = reports[i][n_indexes]
+            condition_1 = check_if_sorted(new_report)
+            condition_2 = check_level_diff(new_report)
+            final_condition[i] = condition_1 and condition_2
+            if final_condition[i]:
+                break
+    # print(final_condition)
+    print(sum(final_condition))
 
-# print(final_condition)
-print(sum(final_condition))
+
+if __name__ == "__main__":
+    parte_1()
+    parte_2()
