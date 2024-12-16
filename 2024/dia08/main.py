@@ -20,8 +20,6 @@ def make_grid(input):
 
 def print_grid(grid, grid_size: tuple[int, int]):
     max_x, max_y = grid_size
-    for coord in grid:
-        x, y = coord
     lines = [[f"{grid[(x,y)]:1}" for x in range(max_x + 1)] for y in range(max_y + 1)]
     for line in lines:
         print("".join(line))
