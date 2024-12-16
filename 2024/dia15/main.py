@@ -2,7 +2,7 @@ from pprint import pp
 import re
 
 # input = open("./mock_1_input.txt", "r").read().strip()
-# input = open("./mock_1_input.txt", "r").read().strip()
+# input = open("./mock_2_input.txt", "r").read().strip()
 input = open("./input.txt", "r").read().strip()
 # print(input)
 
