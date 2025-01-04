@@ -94,14 +94,14 @@ def parte_1() -> None:
     min_score = math.inf
     i = 0
     for path in paths:
-        print(path)
-        # score = calc_path_score(path, initial_pos)
-        # if score < min_score:
-        #     min_score = score
-        #     # min_score_path = path
-        # i += 1
-        # print(f"Path: {i}, min score: {min_score}")
-    print(min_score)
+        # print(path)
+        score = calc_path_score(path, initial_pos)
+        if score < min_score:
+            min_score = score
+            # min_score_path = path
+        i += 1
+        print(f"Path: {i}, min score: {min_score}")
+    # print(min_score)
     # print(min_score_path)
 
 
