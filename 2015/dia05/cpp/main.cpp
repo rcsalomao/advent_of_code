@@ -13,10 +13,13 @@ namespace vw = std::views;
 
 std::vector<std::string> find_all(std::string& line, std::regex& pattern) {
     std::vector<std::string> matches;
-    std::for_each(std::sregex_iterator(line.begin(), line.end(), pattern),
-                  std::sregex_iterator(), [&matches](auto& i) {
-                      matches.push_back(std::smatch{i}.str());
-                  });
+    // std::for_each(std::sregex_iterator(line.begin(), line.end(), pattern),
+    //               std::sregex_iterator(),
+    //               [&matches](std::smatch i) { matches.push_back(i.str()); });
+    for (std::sregex_iterator it{line.begin(), line.end(), pattern};
+         it != std::sregex_iterator{}; it++) {
+        matches.push_back(it->str());
+    }
     return matches;
 }
 
