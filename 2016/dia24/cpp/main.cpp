@@ -137,14 +137,14 @@ void parte_1(std::vector<std::string>& lines) {
             auto [coords_m, place_m] = places[m];
             auto [coords_n, place_n] = places[n];
             string end_key{to_string(coords_n)};
-            deque<tuple<tuple<int, int>, int>> to_visit{{coords_m, 0}};
+            deque<tuple<tuple<int, int>, int>> queue{{coords_m, 0}};
             std::unordered_set<string> visited{};
             visited.insert(to_string(coords_m));
             bool done{false};
             int n_steps{0};
             while (not done) {
-                auto [coords, steps] = to_visit.front();
-                to_visit.pop_front();
+                auto [coords, steps] = queue.front();
+                queue.pop_front();
                 if (to_string(coords) == end_key) {
                     done = true;
                     n_steps = steps;
@@ -155,10 +155,10 @@ void parte_1(std::vector<std::string>& lines) {
                     string try_key{to_string(try_coords)};
                     if (visited.contains(try_key)) continue;
                     if (maze.get_value(try_key) == '#') continue;
-                    to_visit.push_back({try_coords, steps + 1});
+                    queue.push_back({try_coords, steps + 1});
                     visited.insert(try_key);
                 }
-                if (to_visit.empty()) done = true;
+                if (queue.empty()) done = true;
             }
             distances[string{place_m, place_n}] = n_steps;
             distances[string{place_n, place_m}] = n_steps;
@@ -205,14 +205,14 @@ void parte_2(std::vector<std::string>& lines) {
             auto [coords_m, place_m] = places[m];
             auto [coords_n, place_n] = places[n];
             string end_key{to_string(coords_n)};
-            deque<tuple<tuple<int, int>, int>> to_visit{{coords_m, 0}};
+            deque<tuple<tuple<int, int>, int>> queue{{coords_m, 0}};
             std::unordered_set<string> visited{};
             visited.insert(to_string(coords_m));
             bool done{false};
             int n_steps{0};
             while (not done) {
-                auto [coords, steps] = to_visit.front();
-                to_visit.pop_front();
+                auto [coords, steps] = queue.front();
+                queue.pop_front();
                 if (to_string(coords) == end_key) {
                     done = true;
                     n_steps = steps;
@@ -223,10 +223,10 @@ void parte_2(std::vector<std::string>& lines) {
                     string try_key{to_string(try_coords)};
                     if (visited.contains(try_key)) continue;
                     if (maze.get_value(try_key) == '#') continue;
-                    to_visit.push_back({try_coords, steps + 1});
+                    queue.push_back({try_coords, steps + 1});
                     visited.insert(try_key);
                 }
-                if (to_visit.empty()) done = true;
+                if (queue.empty()) done = true;
             }
             distances[string{place_m, place_n}] = n_steps;
             distances[string{place_n, place_m}] = n_steps;

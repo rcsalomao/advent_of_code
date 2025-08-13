@@ -164,7 +164,7 @@ void parte_1(std::vector<std::string>& lines) {
 
         bool found{true};
         for (size_t i : vw::iota(0u, mask.size())) {
-            if (mask[i] * clock_signal[i] != mask[i]) {
+            if (mask[i] != clock_signal[i]) {
                 found = false;
                 break;
             }
