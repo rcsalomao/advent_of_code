@@ -49,63 +49,68 @@ vector<string> find_all(string& line, regex& pattern) {
     return matches;
 }
 
-auto parte_1(vector<string>& lines) {
-    string polymer{lines.front()};
+struct Node {
+    vector<int> metadata;
+    vector<unique_ptr<Node>> children;
+};
 
-    bool done{false};
-    while (not done) {
-        done = true;
-        for (auto i : vw::iota(0u, polymer.size() - 1)) {
-            if (std::isupper(polymer[i]) and std::isupper(polymer[i + 1]))
-                continue;
-            if (std::islower(polymer[i]) and std::islower(polymer[i + 1]))
-                continue;
-            if (std::tolower(polymer[i]) == std::tolower(polymer[i + 1])) {
-                polymer.erase(i, 2);
-                done = false;
-            }
-        }
+unique_ptr<Node> parse_nodes(deque<int>& vi) {
+    int n_ch{vi.front()};
+    vi.pop_front();
+    int n_md{vi.front()};
+    vi.pop_front();
+
+    vector<unique_ptr<Node>> children;
+    for (int i = 0; i < n_ch; i++) {
+        children.push_back(parse_nodes(vi));
     }
 
-    return polymer.size();
+    vector<int> metadata;
+    for (int i = 0; i < n_md; i++) {
+        metadata.push_back(vi.front());
+        vi.pop_front();
+    }
+
+    return std::make_unique<Node>(metadata, std::move(children));
+}
+
+auto parte_1(vector<string>& lines) {
+    deque<int> input =
+        deque{from_range, split(lines[0], " ") |
+                              vw::transform([](auto& s) { return stoi(s); })};
+    auto root = parse_nodes(input);
+    deque<Node*> q{root.get()};
+    long total{0};
+    while (!q.empty()) {
+        Node* n{q.front()};
+        q.pop_front();
+        total += std::reduce(n->metadata.begin(), n->metadata.end(), 0);
+        for (auto& c : n->children) {
+            q.push_back(c.get());
+        }
+    }
+    return total;
+}
+
+int total(unique_ptr<Node>& n) {
+    if (n->children.empty())
+        return std::reduce(n->metadata.begin(), n->metadata.end(), 0);
+    int t{0};
+    for (int i : n->metadata) {
+        int j{i - 1};
+        if (j < 0) continue;
+        if ((size_t)j >= n->children.size()) continue;
+        t += total(n->children[j]);
+    }
+    return t;
 }
 
 auto parte_2(vector<string>& lines) {
-    string start_polymer{lines.front()};
-
-    string alphabet{"abcdefghijklmnopqrstuvxywz"};
-
-    unordered_map<char, size_t> lengths;
-    for (char c : alphabet) {
-        string polymer{};
-        for (char h : start_polymer) {
-            if (c == std::tolower(h)) continue;
-            polymer += h;
-        }
-
-        bool done{false};
-        while (not done) {
-            done = true;
-            for (auto i : vw::iota(0u, polymer.size() - 1)) {
-                if (std::isupper(polymer[i]) and std::isupper(polymer[i + 1]))
-                    continue;
-                if (std::islower(polymer[i]) and std::islower(polymer[i + 1]))
-                    continue;
-                if (std::tolower(polymer[i]) == std::tolower(polymer[i + 1])) {
-                    polymer.erase(i, 2);
-                    done = false;
-                }
-            }
-        }
-        lengths[c] = polymer.size();
-    }
-
-    size_t min_length{std::numeric_limits<size_t>::max()};
-    for (auto [k, v] : lengths) {
-        min_length = std::min(v, min_length);
-    }
-
-    return min_length;
+    deque<int> input =
+        deque{from_range, split(lines[0], " ") |
+                              vw::transform([](auto& s) { return stoi(s); })};
+    auto root = parse_nodes(input);
+    return total(root);
 }
 
 int main(int, char** argv) {
