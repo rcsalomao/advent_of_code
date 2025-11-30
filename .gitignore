@@ -133,7 +133,7 @@ dmypy.json
 .pyre/
 
 # Advent of Code input files
-**/*input.txt
+**/*input*.txt
 
 
 # Para a linguagem c++:
